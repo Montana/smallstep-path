@@ -6,6 +6,7 @@ CYCLE_COMMAND="/usr/bin/mysqladmin flush-ssl"
 cat > /etc/systemd/system/renew-${SERVICE_NAME}-certificate.service <<EOF
 
 [Unit]
+
 Description=${SERVICE_NAME} certificate renewal
 Before=${SERVICE_NAME}.service
 After=network-online.target
