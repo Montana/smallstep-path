@@ -1,12 +1,10 @@
 #!/bin/bash
 
-
 CERT_DIR="/etc/mysql/certificates"
 SERVICE_NAME="mariadb"
 CYCLE_COMMAND="/usr/bin/mysqladmin flush-ssl"
-
-
 cat > /etc/systemd/system/renew-${SERVICE_NAME}-certificate.service <<EOF
+
 [Unit]
 Description=${SERVICE_NAME} certificate renewal
 Before=${SERVICE_NAME}.service
@@ -16,6 +14,7 @@ StartLimitIntervalSec=30
 StartLimitBurst=3
 
 [Service]
+
 Type=simple
 User=root
 Group=root
@@ -53,6 +52,7 @@ MemoryDenyWriteExecute=true
 ReadWriteDirectories=${CERT_DIR}
 
 [Install]
+
 WantedBy=multi-user.target
 EOF
 
